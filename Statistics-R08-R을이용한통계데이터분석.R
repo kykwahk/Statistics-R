@@ -40,10 +40,7 @@ z <- coef(churn.logit)[1] +
 p <- 1/(1+exp(-z))
 head(p)
 
-data(churn)
-churn.test <- churnTest[-c(1, 3)]
-churn.test$churn <- factor(ifelse(churn.test$churn=="no", 1, 2),
-                           levels=c(1, 2), labels=c("no", "yes"))
+churn.test <- churn[3334:5000,]
 churn.logit.pred <- predict(churn.logit, newdata=churn.test, type="response")
 head(churn.logit.pred)
 

@@ -33,9 +33,6 @@ summary(churn.logit)
 
 exp(coef(churn.logit))
 
-churn.test <- churnTest[-c(1, 3)]
-churn.test$churn <- factor(ifelse(churn.test$churn=="no", 1, 2),
-                           levels=c(1, 2), labels=c("no", "yes"))
 churn.test$international_plan <- ifelse(churn.test$international_plan=="no", 0, 1)
 churn.test$voice_mail_plan <- ifelse(churn.test$voice_mail_plan=="no", 0, 1)
 z <- coef(churn.logit)[1] + 

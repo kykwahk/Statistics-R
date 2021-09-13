@@ -55,10 +55,6 @@ mean(churn.test$churn==churn.logit.pred)
 churn.logit2 <- step(churn.logit)
 summary(churn.logit2)
 
-data(churn)
-churn.test <- churnTest[-c(1, 3)]
-churn.test$churn <- factor(ifelse(churn.test$churn=="no", 1, 2),
-                           levels=c(1, 2), c("no", "yes"))
 churn.test$international_plan <- ifelse(churn.test$international_plan=="no", 0, 1)
 churn.test$voice_mail_plan <- ifelse(churn.test$voice_mail_plan=="no", 0, 1)
 table(churn.test$number_customer_service_calls)

@@ -317,3 +317,4 @@ qcc.overdispersion.test(shipsinc$incidents, type="poisson")
 shipsinc.qpoisson <- update(shipsinc.poisson, family=quasipoisson())
 summary(shipsinc.qpoisson)
 exp(coef(shipsinc.qpoisson))
+

@@ -1,15 +1,15 @@
 
 ###############################
-## RÀ» ÀÌ¿ëÇÑ Åë°èµ¥ÀÌÅÍºĞ¼® ##
-## (°û±â¿µ, µµ¼­ÃâÆÇ Ã»¶÷)   ## 
+## Rì„ ì´ìš©í•œ í†µê³„ë°ì´í„°ë¶„ì„ ##
+## (ê³½ê¸°ì˜, ë„ì„œì¶œíŒ ì²­ëŒ)   ## 
 ###############################
 
 #############################
-## Á¦13Àå ±¸Á¶¹æÁ¤½Ä¸ğµ¨¸µ ##
+## ì œ13ì¥ êµ¬ì¡°ë°©ì •ì‹ëª¨ë¸ë§ ##
 #############################
 
 ####################
-## 13.2 ºĞ¼® ÀıÂ÷ ##
+## 13.2 ë¶„ì„ ì ˆì°¨ ##
 ####################
 
 install.packages("lavaan")
@@ -112,7 +112,7 @@ standardizedsolution(fit2) %>%
   stargazer(type="text", title="Convergent Validity: Factor Loadings", summary=FALSE,
             digits=3, digits.extra=0, rownames=FALSE)
 
-# [±×¸² 13-4]
+# [ê·¸ë¦¼ 13-4]
 install.packages("semPlot")
 library(semPlot)
 windows(width=7.0, height=5.5)
@@ -130,7 +130,6 @@ reliability(fit2) %>%
   t() %>%
   as.data.frame() %>%
   rownames_to_column("Construct") %>%
-  slice(-n()) %>%
   select(Construct, "Composite Reliability"=omega, 
          "Average Variance Extracted"=avevar, "Cronbach's alpha"=alpha) %>%
   stargazer(type="text", title="Convergent Validity and Reliability", 
@@ -145,8 +144,7 @@ library(stargazer)
 lavInspect(fit2, what="cor.lv") %>%
   as.data.frame() %>%
   rownames_to_column("Construct") %>%
-  cbind(Square_Root_of_AVE=
-          sqrt(reliability(fit2)["avevar", -ncol(reliability(fit2))])) %>%
+  cbind(Square_Root_of_AVE=sqrt(reliability(fit2)["avevar",])) %>%
   stargazer(type="text", title="Discriminant Validity", 
             summary=FALSE, digits=3, digits.extra=0, rownames=FALSE)
 
@@ -186,7 +184,7 @@ standardizedsolution(fit) %>%
 
 lavInspect(fit, what="rsquare")
 
-# [±×¸² 13-5]
+# [ê·¸ë¦¼ 13-5]
 library(semPlot)
 windows(width=7.0, height=5.5)
 semPaths(fit, what="std", layout="tree2", edge.label.cex=1, edge.color="royalblue", 
@@ -194,10 +192,10 @@ semPaths(fit, what="std", layout="tree2", edge.label.cex=1, edge.color="royalblu
          style="lisrel", curvature=2)
 
 ######################################
-## 13.3 ¸Å°³È¿°úºĞ¼®°ú Á¶ÀıÈ¿°úºĞ¼® ##
+## 13.3 ë§¤ê°œíš¨ê³¼ë¶„ì„ê³¼ ì¡°ì ˆíš¨ê³¼ë¶„ì„ ##
 ######################################
 
-## ¸Å°³È¿°úºĞ¼®
+## ë§¤ê°œíš¨ê³¼ë¶„ì„
 
 sem.med <- "# measurement model
               ind60 =~ x1 + x2 + x3
@@ -237,7 +235,7 @@ parameterEstimates(fit.med, standardized=TRUE) %>%
   stargazer(type="text", title="Regression Coefficients", summary=FALSE,
             digits=3, digits.extra=0, rownames=FALSE)
 
-## Á¶ÀıÈ¿°úºĞ¼®
+## ì¡°ì ˆíš¨ê³¼ë¶„ì„
 
 library(lavaan)
 library(semTools)
@@ -279,7 +277,7 @@ parameterEstimates(fit.mod, standardized=TRUE) %>%
   stargazer(type="text", title="Regression Coefficients", summary=FALSE,
             digits=3, digits.extra=0, rownames=FALSE)
 
-## Á¶Àı¸Å°³È¿°úºĞ¼®
+## ì¡°ì ˆë§¤ê°œíš¨ê³¼ë¶„ì„
 
 library(lavaan)
 data("PoliticalDemocracy")
@@ -346,12 +344,10 @@ parameterEstimates(fit.modmed, standardized=TRUE) %>%
             digits=3, digits.extra=0, rownames=FALSE)
 
 #######################
-## 13.4 ´ÙÁßÁı´ÜºĞ¼® ##
+## 13.4 ë‹¤ì¤‘ì§‘ë‹¨ë¶„ì„ ##
 #######################
 
-install.packages("MBESS")
-library(MBESS)
-data("HS.data")
+library(sem)
 names(HS.data)
 
 sem <- "# measurement model

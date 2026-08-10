@@ -1,7 +1,7 @@
 # R을 이용한 통계데이터분석(제2판)
-『R을 이용한 통계데이터분석(제2판)』(곽기영, 도서출판 청람) | https://product.kyobobook.co.kr/detail/S000201305484   
+📺 YouTube 『곽기영』 채널 | https://www.youtube.com/곽기영   
 
-YouTube 『곽기영』 채널 | https://www.youtube.com/곽기영   
+📘『R을 이용한 통계데이터분석(제2판)』(곽기영, 도서출판 청람) | https://product.kyobobook.co.kr/detail/S000201305484   
 
 Chapter 01 데이터 수집과 요약   
 1.1 데이터 수집   
